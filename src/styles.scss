@@ -6,6 +6,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  p {
+    color: white;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -15,10 +18,26 @@
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-    padding: 20px;
-    padding-top: 0;
-    row-gap: 10px;
+    padding: 10px 30px 30px 30px;
+    row-gap: 20px;
     border-radius: 20px;
+    h1 {
+      font-size: 25px;
+    }
+    button {
+      background-color: rgb(41, 138, 105);
+      border: none;
+      color: white;
+      padding: 5px;
+      box-shadow: 2px 2px 3px grey;
+      border-radius: 5px;
+    }
+    button:hover {
+      box-shadow: 1px 1px 3px grey;
+    }
+    button:active {
+      background-color: rgb(30, 92, 71);
+    }
     * {
       font-size: 20px;
     }
@@ -29,6 +48,120 @@
       .avatar-alt {
         width: 50px;
         height: 50px;
+      }
+    }
+  }
+}
+button {
+  cursor: pointer;
+}
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  h1 {
+    margin-top: -50px;
+  }
+  .chat-wrapper {
+    width: 70%;
+    height: 80%;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: rgb(30, 92, 71);
+    display: flex;
+    overflow: hidden;
+    .chat-users {
+      flex: 1;
+      background-color: rgb(28, 75, 59);
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 25px;
+        background-color: rgb(21, 56, 44);
+        border-bottom: 1px solid grey;
+
+        height: 80px;
+        img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        p {
+          font-size: 25px;
+          font-weight: bolder;
+          cursor: pointer;
+        }
+      }
+      .friend {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid grey;
+        padding: 0 25px;
+        height: 80px;
+        overflow: hidden;
+        img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        div {
+          padding: 0 20px;
+          line-height: 5px;
+          text-align: left;
+          .friend-name {
+            font-weight: bold;
+            font-size: 20px;
+          }
+          .friend-message {
+          }
+        }
+      }
+      .friend:hover {
+        background-color: rgb(21, 56, 44);
+      }
+    }
+    .chat-conversations {
+      flex: 2;
+    }
+  }
+  .chat-conversations {
+    .navbar-chat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 25px;
+      border-left: 1px solid grey;
+      border-bottom: 1px solid grey;
+      background-color: rgb(22, 60, 47);
+      height: 80px;
+      .friend-name {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .calling-friend {
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+        img {
+          height: 25px;
+          width: 25px;
+          cursor: pointer;
+          opacity: 0.4;
+        }
+        p {
+          font-size: 25px;
+          font-weight: bolder;
+          cursor: pointer;
+        }
       }
     }
   }
