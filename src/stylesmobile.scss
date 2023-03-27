@@ -1,0 +1,90 @@
+//Mobile Version
+
+.mobile-home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  h1 {
+    margin-top: -50px;
+  }
+  .chat-wrapper {
+    width: 90%;
+    height: 80%;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: rgb(27, 119, 89);
+    display: flex;
+    overflow: hidden;
+    .chat-users {
+      min-width: 100%;
+      background-color: rgb(28, 75, 59);
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 25px;
+        background-color: rgb(21, 56, 44);
+        border-bottom: 1px solid grey;
+        height: 80px;
+        img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        p {
+          font-size: 25px;
+          font-weight: bolder;
+          cursor: pointer;
+        }
+      }
+      .friend {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid grey;
+        padding: 0 25px;
+        height: 80px;
+        overflow: hidden;
+        // width: 100%;
+
+        .friend-image {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        div {
+          width: 80%;
+
+          padding: 0 3px 0 20px;
+          line-height: 4px;
+          text-align: left;
+          .friend-name {
+            font-weight: bold;
+            font-size: 20px;
+          }
+
+          .friend-last-message {
+            margin-top: -5px;
+            margin-right: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            max-height: 2em;
+            line-height: 1.4em;
+          }
+        }
+      }
+      .friend:hover {
+        background-color: rgb(32, 98, 75);
+      }
+    }
+  }
+}

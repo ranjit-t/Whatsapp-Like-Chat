@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Signup from "./components/Signup";
 import Chatpage from "./components/Homepage";
 import Login from "./components/Login";
+import "./styles.scss";
+import "./stylesmobile.scss";
 
 function App() {
   const [user, setUser] = useState(false);

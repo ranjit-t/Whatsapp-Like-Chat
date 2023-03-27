@@ -67,15 +67,15 @@ button {
     margin-top: -50px;
   }
   .chat-wrapper {
-    width: 70%;
+    width: 90%;
     height: 80%;
     border: 1px solid white;
     border-radius: 20px;
-    background-color: rgb(30, 92, 71);
+    background-color: rgb(27, 119, 89);
     display: flex;
     overflow: hidden;
     .chat-users {
-      flex: 1;
+      max-width: 40%;
       background-color: rgb(28, 75, 59);
       .navbar {
         display: flex;
@@ -84,7 +84,6 @@ button {
         padding: 0 25px;
         background-color: rgb(21, 56, 44);
         border-bottom: 1px solid grey;
-
         height: 80px;
         img {
           width: 50px;
@@ -107,60 +106,153 @@ button {
         padding: 0 25px;
         height: 80px;
         overflow: hidden;
-        img {
+
+        .friend-image {
           width: 50px;
           height: 50px;
           object-fit: cover;
           border-radius: 50%;
         }
         div {
-          padding: 0 20px;
-          line-height: 5px;
+          padding: 0 3px 0 20px;
+          line-height: 4px;
           text-align: left;
+          max-width: 200px;
+
           .friend-name {
             font-weight: bold;
             font-size: 20px;
           }
-          .friend-message {
+
+          .friend-last-message {
+            margin-top: -5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            max-height: 2em;
+            line-height: 1.4em;
           }
         }
       }
       .friend:hover {
-        background-color: rgb(21, 56, 44);
+        background-color: rgb(32, 98, 75);
       }
     }
+
     .chat-conversations {
-      flex: 2;
-    }
-  }
-  .chat-conversations {
-    .navbar-chat {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 25px;
-      border-left: 1px solid grey;
-      border-bottom: 1px solid grey;
-      background-color: rgb(22, 60, 47);
-      height: 80px;
-      .friend-name {
-        font-weight: bold;
-        font-size: 20px;
-      }
-      .calling-friend {
+      height: 100%;
+
+      .navbar-chat {
         display: flex;
         align-items: center;
-        column-gap: 30px;
-        img {
-          height: 25px;
-          width: 25px;
-          cursor: pointer;
-          opacity: 0.4;
+        justify-content: space-between;
+        padding: 0 25px;
+        background-color: rgb(31, 81, 63);
+        height: 80px;
+        .friend-name {
+          font-weight: bold;
+          font-size: 20px;
         }
-        p {
-          font-size: 25px;
-          font-weight: bolder;
-          cursor: pointer;
+        .calling-friend {
+          display: flex;
+          align-items: center;
+          column-gap: 30px;
+          img {
+            height: 25px;
+            width: 25px;
+            cursor: pointer;
+            opacity: 0.4;
+          }
+          p {
+            font-size: 25px;
+            font-weight: bolder;
+            cursor: pointer;
+          }
+        }
+      }
+      .messages {
+        overflow-y: scroll;
+        height: calc(100% - 140px);
+        .message {
+          margin-top: 5px;
+          margin-left: 20px;
+          display: flex;
+          margin-bottom: 10px;
+
+          img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+          .message-content {
+            margin-left: 20px;
+            margin-right: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(211, 228, 243);
+            color: black;
+            padding: 0 10px;
+            border-radius: 0 10px 10px 10px;
+            max-height: max-content;
+          }
+        }
+        .owner {
+          flex-direction: row-reverse;
+          margin-right: 20px;
+          .message-content {
+            padding: 0 20px;
+            border-radius: 10px 0px 10px 10px;
+            margin-right: 20px;
+            margin-left: 70px;
+
+            background-color: rgb(90, 171, 241);
+            color: white;
+          }
+        }
+      }
+      .send-input {
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        .input {
+          width: calc(100% - 200px);
+          input {
+            height: 40px;
+            padding: 10px;
+            border-style: hidden;
+            font-size: 15px;
+            width: 100%;
+
+            &::placeholder {
+              border: none;
+              outline: none;
+            }
+          }
+        }
+        input:focus {
+          outline: none;
+          border-style: hidden;
+        }
+        .send-icons {
+          display: flex;
+          align-items: center;
+          padding-right: 10px;
+          width: 150px;
+
+          img {
+            height: 25px;
+            width: 25px;
+            cursor: pointer;
+            padding-right: 10px;
+          }
+          .send-button {
+            height: 40px;
+            width: 40px;
+          }
         }
       }
     }

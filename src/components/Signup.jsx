@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles.scss";
+// import "../styles.scss";
 import user from "../images/user.png";
 
 export default function Signup({ handleUser, handleAccount }) {
