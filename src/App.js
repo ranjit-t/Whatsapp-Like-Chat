@@ -6,13 +6,17 @@ import Login from "./components/Login";
 import "./styles.scss";
 import "./stylesmobile.scss";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import { toast } from "react-toastify";
+
 function App() {
   const [user, setUser] = useState(false);
   const [account, setAccount] = useState(true);
 
   useEffect(() => {
     setUser(false);
-    setAccount(false);
+    setAccount(true);
   }, []);
   const handleAccount = () => {
     setAccount((prev) => !prev);
@@ -29,6 +33,12 @@ function App() {
       ) : (
         <Signup handleUser={handleUser} handleAccount={handleAccount}></Signup>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        draggable
+        pauseOnHover
+      ></ToastContainer>
     </div>
   );
 }

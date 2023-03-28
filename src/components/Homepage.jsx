@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import Chat from "../componentssub/Chat";
 import Users from "../componentssub/Users";
 
-export default function Chatpage() {
+export default function Chatpage({ handleUser, handleAccount }) {
   const [windowWidth, setwindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     function handleResize() {
       setwindowWidth(window.innerWidth);
-      // console.log(windowWidth);
     }
     window.addEventListener("resize", handleResize);
   }, []);
@@ -18,14 +17,15 @@ export default function Chatpage() {
         <div className="home-page">
           <h1>Textapp</h1>
           <div className="chat-wrapper">
-            <Users></Users>
+            <Users handleUser={handleUser}></Users>
             <Chat></Chat>
           </div>
         </div>
       ) : (
         <div className="mobile-home-page">
+          <h1>Textapp</h1>
           <div className="chat-wrapper">
-            <Users></Users>
+            <Users handleUser={handleUser}></Users>
           </div>
         </div>
       )}

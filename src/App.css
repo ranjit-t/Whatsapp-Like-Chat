@@ -8,4 +8,5 @@ body,
 html {
   padding: none;
   margin: none;
+  -webkit-tap-highlight-color: transparent;
 }
