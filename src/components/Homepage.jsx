@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Chat from "../componentssub/Chat";
 import Users from "../componentssub/Users";
 
-export default function Chatpage({ handleUser, handleAccount }) {
+export default function Chatpage() {
   const [windowWidth, setwindowWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     function handleResize() {
       setwindowWidth(window.innerWidth);
@@ -17,7 +18,7 @@ export default function Chatpage({ handleUser, handleAccount }) {
         <div className="home-page">
           <h1>Textapp</h1>
           <div className="chat-wrapper">
-            <Users handleUser={handleUser}></Users>
+            <Users></Users>
             <Chat></Chat>
           </div>
         </div>
@@ -25,7 +26,7 @@ export default function Chatpage({ handleUser, handleAccount }) {
         <div className="mobile-home-page">
           <h1>Textapp</h1>
           <div className="chat-wrapper">
-            <Users handleUser={handleUser}></Users>
+            <Users></Users>
           </div>
         </div>
       )}

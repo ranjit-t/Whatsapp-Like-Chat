@@ -156,6 +156,7 @@ button {
           cursor: pointer;
         }
         .profile-click {
+          z-index: 10;
           position: absolute;
           right: 35px;
           top: 35px;
@@ -186,6 +187,25 @@ button {
           height: 50px;
           object-fit: cover;
           border-radius: 50%;
+        }
+      }
+      .search-users {
+        background-color: rgb(28, 75, 59);
+        margin-top: 30px;
+        margin-bottom: 20px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid grey;
+        width: 70%;
+        color: white;
+        padding-left: 30px;
+        font-size: 15px;
+        &::placeholder {
+          border: none;
+          outline: none;
+          color: white;
+          margin-left: 30px;
+          opacity: 0.5;
         }
       }
       .friend {

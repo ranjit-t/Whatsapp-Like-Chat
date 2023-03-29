@@ -3,13 +3,13 @@ import user from "../images/user.png";
 
 import { auth, db, storage } from "../firebaseconfig/firebaseconfig";
 import { createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
-import { serverTimestamp, setDoc, doc, collection } from "firebase/firestore";
+import { serverTimestamp, setDoc, doc } from "firebase/firestore";
 // import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import { toast } from "react-toastify";
 
-export default function Signup({ handleUser, handleAccount }) {
+export default function Signup({ handleAccount }) {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [DisplayName, setDisplayName] = useState("");
@@ -56,15 +56,13 @@ export default function Signup({ handleUser, handleAccount }) {
                     };
 
                     await setDoc(doc(db, "users", userUID), formData);
-                    const chatRef = doc(collection(db, `chat-${Email}`));
-                    await setDoc(chatRef, {});
+                    await setDoc(doc(db, "userChats", userUID), {});
                   }
                 );
               }
             );
 
             toast.success("You are Registered");
-            handleUser();
           } catch (e) {
             toast.error(e.message.slice(10, 100));
           }
@@ -104,12 +102,24 @@ export default function Signup({ handleUser, handleAccount }) {
           style={{ display: "none" }}
           onChange={(e) => {
             setProfileImage(e.target.files[0]);
+            console.log(profileImage);
           }}
         />
         <label htmlFor="avatar">
           <img src={user} alt="avatar" className="avatar-alt" />
           <span>Profile Picture</span>
         </label>
+        <p
+          style={{
+            marginTop: "-20px",
+            marginBottom: "-20px",
+            fontSize: "15px",
+            color: "black",
+            maxWidth: "50px",
+          }}
+        >
+          {profileImage !== null && profileImage.name}
+        </p>
         <button>Signup</button>
       </form>
       <p>Already Have An Account ?</p>

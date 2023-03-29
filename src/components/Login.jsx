@@ -4,7 +4,7 @@ import { auth } from "../firebaseconfig/firebaseconfig";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { toast } from "react-toastify";
 
-export default function Signup({ handleUser, handleAccount }) {
+export default function Signup({ handleAccount }) {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   return (
@@ -16,7 +16,6 @@ export default function Signup({ handleUser, handleAccount }) {
           try {
             await signInWithEmailAndPassword(auth, Email, Password);
             toast.success("Welcome Back");
-            handleUser();
           } catch (e) {
             toast.error(e.message.slice(10, 100));
           }
@@ -53,13 +52,7 @@ export default function Signup({ handleUser, handleAccount }) {
       >
         Signup
       </button>
-      <button
-        onClick={() => {
-          handleUser();
-        }}
-      >
-        Demo without Login
-      </button>
+      <button onClick={() => {}}>Demo without Login</button>
     </div>
   );
 }

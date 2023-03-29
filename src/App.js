@@ -1,44 +1,67 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Signup from "./components/Signup";
-import Chatpage from "./components/Homepage";
+import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import "./styles.scss";
 import "./stylesmobile.scss";
 
+import { auth } from "./firebaseconfig/firebaseconfig";
+import { onAuthStateChanged } from "firebase/auth";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { toast } from "react-toastify";
+
+import RiseLoader from "react-spinners/RiseLoader";
 
 function App() {
   const [user, setUser] = useState(false);
   const [account, setAccount] = useState(true);
+  const [pageLoading, setPageLoading] = useState(true);
 
   useEffect(() => {
-    setUser(false);
-    setAccount(true);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(true);
+      } else {
+        setUser(false);
+      }
+    });
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPageLoading(false);
+    }, 1000);
+  }, []);
+
   const handleAccount = () => {
     setAccount((prev) => !prev);
   };
-  const handleUser = () => {
-    setUser((prev) => !prev);
-  };
+
   return (
-    <div className="App">
-      {user ? (
-        <Chatpage handleUser={handleUser}></Chatpage>
-      ) : account ? (
-        <Login handleUser={handleUser} handleAccount={handleAccount}></Login>
+    <div>
+      {pageLoading ? (
+        <div className="loader">
+          <RiseLoader color="rgb(28, 75, 59)" />
+        </div>
       ) : (
-        <Signup handleUser={handleUser} handleAccount={handleAccount}></Signup>
+        <div className="App">
+          {user ? (
+            <Homepage></Homepage>
+          ) : account ? (
+            <Login handleAccount={handleAccount}></Login>
+          ) : (
+            <Signup handleAccount={handleAccount}></Signup>
+          )}
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            draggable
+            pauseOnHover
+          ></ToastContainer>
+        </div>
       )}
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        draggable
-        pauseOnHover
-      ></ToastContainer>
     </div>
   );
 }
