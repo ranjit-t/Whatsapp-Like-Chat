@@ -6,10 +6,17 @@ import sendbutton from "../images/sendbutton.png";
 
 import { db, auth } from "../firebaseconfig/firebaseconfig";
 import { Context } from "../Context";
-import { arrayUnion, doc, Timestamp, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 
 export default function Sendinput() {
-  const { currentChatUserID } = useContext(Context);
+  const { currentChatUserID, currentChatUserName, currentChatUserphotoURL } =
+    useContext(Context);
 
   const [sendingText, setSendingText] = useState("");
   // const [sendingIMG, setSendingIMG] = useState(null);
@@ -19,7 +26,11 @@ export default function Sendinput() {
     auth.currentUser.uid > currentChatUserID
       ? auth.currentUser.uid + currentChatUserID
       : currentChatUserID + auth.currentUser.uid;
-
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
+  };
   const handleSendMessage = async () => {
     try {
       await updateDoc(doc(db, "chats", combinedID), {
@@ -32,6 +43,24 @@ export default function Sendinput() {
         }),
       });
       setSendingText("");
+      await updateDoc(doc(db, "userChats", auth.currentUser.uid), {
+        [combinedID + ".userInfo"]: {
+          uid: currentChatUserID,
+          displayName: currentChatUserName,
+          photoURL: currentChatUserphotoURL,
+          lastMessage: sendingText,
+        },
+        [combinedID + ".date"]: serverTimestamp(),
+      });
+      await updateDoc(doc(db, "userChats", currentChatUserID), {
+        [combinedID + ".userInfo"]: {
+          uid: auth.currentUser.uid,
+          displayName: auth.currentUser.displayName,
+          photoURL: auth.currentUser.photoURL,
+          lastMessage: sendingText,
+        },
+        [combinedID + ".date"]: serverTimestamp(),
+      });
     } catch (e) {
       alert(e.message);
     }
@@ -46,6 +75,7 @@ export default function Sendinput() {
           onChange={(e) => {
             setSendingText(e.target.value);
           }}
+          onKeyDown={handleKeyDown}
         />
       </div>
       <div className="send-icons">
