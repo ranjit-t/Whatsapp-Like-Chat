@@ -1,207 +1,53 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { db, auth } from "../firebaseconfig/firebaseconfig";
+import { Context } from "../Context";
+import { doc, onSnapshot } from "firebase/firestore";
 
 export default function Messages() {
+  const [messages, setMessages] = useState([]);
+  const { currentChatUserID, currentChatUserphotoURL } = useContext(Context);
+  // currentChatUserName, currentChatUserphotoURL
+  useEffect(() => {
+    const combinedID =
+      auth.currentUser.uid > currentChatUserID
+        ? auth.currentUser.uid + currentChatUserID
+        : currentChatUserID + auth.currentUser.uid;
+    const unsub = onSnapshot(doc(db, "chats", combinedID), (doc) => {
+      // console.log("Current data: ", doc.data());
+      doc.exists() && setMessages(doc.data().messages);
+      // console.log(messages.length);
+    });
+
+    return () => {
+      unsub();
+    };
+  }, [currentChatUserID]);
+
   return (
     <div className="messages">
-      <div className="message owner">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>Hello</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>How are you ?</p>
-        </div>
-      </div>
-      <div className="message">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>
-            How are you ? How are you ? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ipsam maiores veniam corporis? Voluptas vel natus
-            eum perferendis dolorum animi harum aliquid id, itaque, eius culpa
-            doloremque cumque soluta unde cum.
-          </p>
-        </div>
-      </div>
-      <div className="message owner">
-        <img
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="avatar"
-        />
-        <div className="message-content">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-            accusantium, iste fugit magni provident velit, id voluptate modi
-            quibusdam repudiandae asperiores veniam. Harum laborum repellendus
-            nemo tenetur consectetur sequi molestiae?
-          </p>
-        </div>
-      </div>
+      {messages &&
+        messages.map((m) => {
+          return (
+            <div
+              className={
+                m.user === auth.currentUser.uid ? "message owner" : "message"
+              }
+              key={Math.random()}
+            >
+              <img
+                src={
+                  m.user === auth.currentUser.uid
+                    ? auth.currentUser.photoURL
+                    : currentChatUserphotoURL
+                }
+                alt="avatar"
+              />
+              <div className="message-content">
+                <p>{m.message}</p>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 }

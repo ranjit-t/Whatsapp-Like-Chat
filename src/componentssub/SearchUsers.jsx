@@ -22,39 +22,49 @@ export default function SearchUsers() {
   const [searchUserUID, setSearchUserUID] = useState(null);
   const [userExists, setuserExists] = useState(false);
 
-  const { setCurrentChatUserName } = useContext(Context);
+  const {
+    setCurrentChatUserName,
+    setCurrentChatUserID,
+    setCurrentChatUserphotoURL,
+  } = useContext(Context);
 
   const handleKeyDown = async (e) => {
     if (e.key === "Enter") {
       if (searchUserEmail === auth.currentUser.email) {
         toast.error("Searched Email is yours");
       } else {
-        const q = query(
-          collection(db, "users"),
-          where("email", "==", searchUserEmail)
-        );
         try {
+          const q = query(
+            collection(db, "users"),
+            where("email", "==", searchUserEmail)
+          );
           const querySnapshot = await getDocs(q);
           querySnapshot.forEach((doc) => {
-            setSearchUserPhoto(doc.data().photoURL);
-            setSearchUserDisplayName(doc.data().name);
-            setSearchUserUID(doc.data().uid);
+            // console.log(doc.data());
+            if (doc.data().name !== null) {
+              setSearchUserPhoto(doc.data().photoURL);
+              setSearchUserDisplayName(doc.data().name);
+              setSearchUserUID(doc.data().uid);
+              //
 
-            //
-            setCurrentChatUserName(doc.data().name);
-
-            // console.log(searchUserUID);
+              //
+              setSearchUserEmail("");
+              setuserExists(true);
+            }
           });
-          setSearchUserEmail("");
-          setuserExists(true);
         } catch (e) {
           toast.error("User not found");
+          setuserExists(false);
           console.log(e.message);
         }
       }
     }
   };
   const handleUserClick = async () => {
+    //sending current clicked friend to Chat conversation
+    setCurrentChatUserphotoURL(searchUserPhoto);
+    setCurrentChatUserName(searchUserDisplayName);
+    setCurrentChatUserID(searchUserUID);
     // check if conversation exists
     const combinedID =
       auth.currentUser.uid > searchUserUID
@@ -80,12 +90,12 @@ export default function SearchUsers() {
         });
         console.log("done2");
         await updateDoc(doc(db, "userChats", searchUserUID), {
-          [combinedID + ".date"]: {
+          [combinedID + ".userInfo"]: {
             uid: auth.currentUser.uid,
             displayName: auth.currentUser.displayName,
             photoURL: auth.currentUser.photoURL,
           },
-          [combinedID + ".userInfo"]: serverTimestamp(),
+          [combinedID + ".date"]: serverTimestamp(),
         });
         console.log("done3");
         setuserExists(false);
