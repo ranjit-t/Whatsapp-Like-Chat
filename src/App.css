@@ -18,3 +18,12 @@ html {
   justify-content: center;
   align-items: center;
 }
+.developer {
+  margin-top: -80px;
+  padding-bottom: 30px;
+  background-color: #1f221f;
+  color: white;
+}
+a {
+  color: white;
+}

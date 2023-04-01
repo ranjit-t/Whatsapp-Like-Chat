@@ -109,7 +109,7 @@ export default function SearchUsers() {
     <div>
       <input
         type="text"
-        placeholder="Search User by Email"
+        placeholder="add a new user by email"
         className="search-users"
         value={searchUserEmail}
         onChange={(e) => {

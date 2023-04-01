@@ -60,6 +60,16 @@ function App() {
             draggable
             pauseOnHover
           ></ToastContainer>
+          <div className="developer">
+            <p>Made with ❤️ by Ranjit Thota</p>
+            <a
+              href="https://github.com/ranjit-t"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          </div>
         </div>
       )}
     </div>

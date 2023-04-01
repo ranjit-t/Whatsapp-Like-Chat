@@ -9,7 +9,7 @@ export default function NavbarChat() {
   return (
     <div className="navbar-chat">
       <p className="friend-name">
-        {currentChatUserName ? currentChatUserName : "Dua"}
+        {currentChatUserName ? currentChatUserName : ""}
       </p>
       <div className="calling-friend">
         <img src={call} alt="call" />
