@@ -16,7 +16,9 @@ import { toast } from "react-toastify";
 import { Context } from "../Context";
 
 export default function SearchUsers() {
-  const [searchUserEmail, setSearchUserEmail] = useState("");
+  const [searchUserEmail, setSearchUserEmail] = useState(
+    "amailtoranjith@gmail.com"
+  );
   const [searchUserPhoto, setSearchUserPhoto] = useState(null);
   const [searchUserDisplayName, setSearchUserDisplayName] = useState(null);
   const [searchUserUID, setSearchUserUID] = useState(null);

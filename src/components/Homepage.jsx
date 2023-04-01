@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Chat from "../componentssub/Chat";
 import Users from "../componentssub/Users";
+import { Context } from "../Context";
 
 export default function Chatpage() {
+  const { mobileChatSelect } = useContext(Context);
   const [windowWidth, setwindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function Chatpage() {
         <div className="mobile-home-page">
           <h1>Textapp</h1>
           <div className="chat-wrapper">
-            <Users></Users>
+            {mobileChatSelect ? <Chat></Chat> : <Users></Users>}
           </div>
         </div>
       )}

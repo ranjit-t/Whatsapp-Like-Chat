@@ -52,7 +52,7 @@ export default function Signup({ handleAccount }) {
       >
         Signup
       </button>
-      <button onClick={() => {}}>Demo without Login</button>
+      {/* <button onClick={() => {}}>Demo without Login</button> */}
     </div>
   );
 }

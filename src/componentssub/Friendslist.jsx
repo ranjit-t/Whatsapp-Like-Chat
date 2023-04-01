@@ -10,6 +10,7 @@ export default function Friendslist() {
     setCurrentChatUserName,
     setCurrentChatUserID,
     setCurrentChatUserphotoURL,
+    setMobileChatSelect,
   } = useContext(Context);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function Friendslist() {
                   setCurrentChatUserphotoURL(chat[1].userInfo.photoURL);
                   setCurrentChatUserName(chat[1].userInfo.displayName);
                   setCurrentChatUserID(chat[1].userInfo.uid);
+                  setMobileChatSelect(true);
                 }}
               >
                 <img
@@ -56,41 +58,6 @@ export default function Friendslist() {
               </div>
             );
           })}
-      {/* <div className="friend">
-        <img
-          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
-          alt="friend"
-          className="friend-image"
-        />
-        <div>
-          <p className="friend-name">Dua</p>
-          <p className="friend-last-message">
-            Hey Yo, How is it going ? Hey Yo, How is it going ?
-          </p>
-        </div>
-      </div>
-      <div className="friend">
-        <img
-          src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-          alt="friend"
-          className="friend-image"
-        />
-        <div>
-          <p className="friend-name">Lorenzo</p>
-          <p className="friend-last-message">Coming here ? or not tell me</p>
-        </div>
-      </div>
-      <div className="friend">
-        <img
-          src="https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-          alt="friend"
-          className="friend-image"
-        />
-        <div>
-          <p className="friend-name">Ram</p>
-          <p className="friend-last-message">Yep, That is nice 😃</p>
-        </div>
-      </div> */}
     </div>
   );
 }

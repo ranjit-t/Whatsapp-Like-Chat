@@ -7,6 +7,8 @@ export function ContextProvider({ children }) {
   const [currentChatUserID, setCurrentChatUserID] = useState("");
   const [currentChatUserphotoURL, setCurrentChatUserphotoURL] = useState("");
 
+  const [mobileChatSelect, setMobileChatSelect] = useState(false);
+
   return (
     <Context.Provider
       value={{
@@ -16,6 +18,8 @@ export function ContextProvider({ children }) {
         setCurrentChatUserID,
         currentChatUserphotoURL,
         setCurrentChatUserphotoURL,
+        mobileChatSelect,
+        setMobileChatSelect,
       }}
     >
       {children}
