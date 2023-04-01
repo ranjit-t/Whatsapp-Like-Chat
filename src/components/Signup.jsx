@@ -44,7 +44,9 @@ export default function Signup({ handleAccount }) {
                     // console.log("File available at", downloadURL);
                     await updateProfile(auth.currentUser, {
                       displayName: DisplayName.trim(),
-                      photoURL: downloadURL,
+                      photoURL: profileImage
+                        ? downloadURL
+                        : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
                     });
                     const userUID = userCred.user.uid;
                     const formData = {
