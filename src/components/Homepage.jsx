@@ -16,7 +16,7 @@ export default function Chatpage() {
 
   return (
     <div>
-      {windowWidth > 600 ? (
+      {windowWidth > 750 ? (
         <div className="home-page">
           <h1>Textapp</h1>
           <div className="chat-wrapper">

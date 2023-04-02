@@ -22,7 +22,7 @@ export default function NavbarChat() {
       <div className="calling-friend">
         <img src={call} alt="call" />
         <img src={videocall} alt="videocall" />
-        {windowWidth > 600 ? (
+        {windowWidth > 750 ? (
           <p>⋮</p>
         ) : (
           <p

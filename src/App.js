@@ -63,6 +63,7 @@ function App() {
           <div className="developer">
             <p>Made with ❤️ by Ranjit Thota</p>
             <a
+              className="git-hub"
               href="https://github.com/ranjit-t"
               target="_blank"
               rel="noreferrer"

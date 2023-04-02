@@ -15,7 +15,8 @@ export default function Navbar() {
       }}
     >
       <img src={auth.currentUser.photoURL} alt="avatar" />
-      <p>⋮</p>
+      <p className="navbar-name">{auth.currentUser.displayName}</p>
+      <p className="navbar-options">⋮</p>
       {profileClick && (
         <div className="profile-click">
           {/* <div

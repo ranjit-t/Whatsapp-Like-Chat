@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background-color: rgb(41, 138, 105);
-  height: 100vh;
+  height: 100%;
 }
 
 img:not([src]) {
@@ -10,10 +10,14 @@ img:not([src]) {
 
 body,
 html {
-  padding: none;
-  margin: none;
+  margin: 0;
   -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  margin: 0;
 }
+
 .loader {
   background-color: #1f221f;
   width: 100%;
@@ -27,7 +31,8 @@ html {
   padding-bottom: 30px;
   background-color: #1f221f;
   color: white;
+  line-height: 0.3;
 }
-a {
+.git-hub {
   color: white;
 }
