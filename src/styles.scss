@@ -331,7 +331,15 @@ button {
             color: black;
             padding: 0 10px;
             border-radius: 0 10px 10px 10px;
-            max-height: max-content;
+            height: auto;
+            max-width: 70%;
+            overflow-wrap: break-word;
+            p {
+              padding: 10px;
+              max-width: 100%;
+              margin: 0;
+              text-align: left;
+            }
           }
           .photo-content {
             display: flex;
@@ -340,10 +348,12 @@ button {
             align-items: center;
             background-color: rgb(211, 228, 243);
             color: black;
-            // padding: 0 10px;
             border-radius: 0 10px 10px 10px;
             max-height: max-content;
             width: 30%;
+            padding-bottom: 5px;
+            margin-left: 10px;
+
             img {
               width: 100%;
               height: auto;
@@ -353,12 +363,14 @@ button {
             .download-link {
               max-width: 100%;
               padding: 2px;
+              color: black;
             }
           }
         }
         .owner {
           flex-direction: row-reverse;
           margin-right: 20px;
+
           .message-content {
             padding: 0 20px;
             border-radius: 10px 0px 10px 10px;
@@ -366,6 +378,15 @@ button {
             margin-left: 70px;
             background-color: rgb(90, 171, 241);
             color: white;
+            height: auto;
+            max-width: 70%;
+            overflow-wrap: break-word;
+            p {
+              padding: 10px;
+              max-width: 100%;
+              margin: 0;
+              text-align: left;
+            }
           }
           .photo-content {
             display: flex;
@@ -374,12 +395,11 @@ button {
             align-items: center;
             background-color: rgb(90, 171, 241);
             color: white;
-            // color: black;
-            // padding: 0 10px;
             padding-bottom: 5px;
             border-radius: 10px 0px 10px 10px;
             max-height: max-content;
             width: 30%;
+            margin-right: 10px;
 
             img {
               width: 100%;
@@ -392,6 +412,7 @@ button {
             .download-link {
               max-width: 100%;
               padding: 2px;
+              color: white;
             }
           }
         }

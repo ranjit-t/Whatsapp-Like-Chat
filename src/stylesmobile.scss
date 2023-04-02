@@ -220,7 +220,16 @@
             color: black;
             padding: 0 10px;
             border-radius: 0 10px 10px 10px;
-            max-height: max-content;
+            height: auto;
+            max-width: 70%;
+
+            overflow-wrap: break-word;
+            p {
+              padding: 10px;
+              max-width: 100%;
+              margin: 0;
+              text-align: left;
+            }
           }
           .photo-content {
             display: flex;
@@ -229,10 +238,11 @@
             align-items: center;
             background-color: rgb(211, 228, 243);
             color: black;
-
+            padding-bottom: 5px;
             border-radius: 0 10px 10px 10px;
             max-height: max-content;
-            width: 70%;
+            width: 65%;
+            margin-left: 10px;
             img {
               width: 100%;
               height: auto;
@@ -242,6 +252,7 @@
             .download-link {
               max-width: 100%;
               padding: 2px;
+              color: black;
             }
           }
         }
@@ -255,6 +266,15 @@
             margin-left: 70px;
             background-color: rgb(90, 171, 241);
             color: white;
+            height: auto;
+            max-width: 70%;
+            overflow-wrap: break-word;
+            p {
+              padding: 10px;
+              max-width: 100%;
+              margin: 0;
+              text-align: left;
+            }
           }
           .photo-content {
             display: flex;
@@ -269,6 +289,7 @@
             border-radius: 10px 0px 10px 10px;
             max-height: max-content;
             width: 70%;
+            margin-right: 10px;
 
             img {
               width: 100%;
@@ -281,6 +302,7 @@
             .download-link {
               max-width: 100%;
               padding: 2px;
+              color: white;
             }
           }
         }
@@ -291,7 +313,8 @@
         justify-content: space-between;
         background-color: white;
         .input {
-          width: calc(100% - 200px);
+          // width: calc(100% - 200px);
+          width: calc(100% - 130px);
           input {
             height: 40px;
             padding: 10px;

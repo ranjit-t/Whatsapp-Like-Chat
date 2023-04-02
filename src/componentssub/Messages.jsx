@@ -39,8 +39,9 @@ export default function Messages() {
     "These are the instructions to use the App",
     "You can find new users by searching their email address",
     "Then open a new conversation by clicking on their profile when searched",
-    "am@gmail.com ",
+    "amailtoranjith@gmail.com ",
     "is a demo user to explore our Textapp",
+    "Enjoy Texting!",
   ];
 
   return (
@@ -87,6 +88,7 @@ export default function Messages() {
                     />
                     <a
                       href={m.imgURL}
+                      className="download-link"
                       target="_blank"
                       rel="noreferrer"
                       download
