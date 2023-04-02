@@ -98,8 +98,11 @@ export default function Sendinput() {
             );
           });
         } catch (e) {
-          alert(e.message);
-          toast.error(e.message);
+          if (!currentChatUserID) {
+            toast.error("You can't send messages to Admin");
+          } else {
+            toast.error("Oops, there is an error!");
+          }
         }
       } else {
         try {
@@ -134,7 +137,11 @@ export default function Sendinput() {
           setSendingText("");
           setSendingImgURL("");
         } catch (e) {
-          alert(e.message);
+          if (!currentChatUserID) {
+            toast.error("You can't send messages to Admin");
+          } else {
+            toast.error("Oops, there is an error!");
+          }
         }
       }
     }

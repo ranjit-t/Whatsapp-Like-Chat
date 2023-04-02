@@ -23,6 +23,8 @@
     .chat-users {
       min-width: 100%;
       background-color: rgb(28, 75, 59);
+      overflow-x: hidden;
+      overflow-y: scroll;
       .navbar {
         display: flex;
         align-items: center;
@@ -222,11 +224,12 @@
           }
           .photo-content {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-
+            background-color: rgb(211, 228, 243);
             color: black;
-            padding: 0 10px;
+
             border-radius: 0 10px 10px 10px;
             max-height: max-content;
             width: 70%;
@@ -234,6 +237,11 @@
               width: 100%;
               height: auto;
               border-radius: 0;
+            }
+
+            .download-link {
+              max-width: 100%;
+              padding: 2px;
             }
           }
         }
@@ -247,6 +255,33 @@
             margin-left: 70px;
             background-color: rgb(90, 171, 241);
             color: white;
+          }
+          .photo-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(90, 171, 241);
+            color: white;
+            // color: black;
+            // padding: 0 10px;
+            padding-bottom: 5px;
+            border-radius: 10px 0px 10px 10px;
+            max-height: max-content;
+            width: 70%;
+
+            img {
+              width: 100%;
+              height: auto;
+              border-radius: 0;
+            }
+            img:not([src]) {
+              visibility: hidden;
+            }
+            .download-link {
+              max-width: 100%;
+              padding: 2px;
+            }
           }
         }
       }

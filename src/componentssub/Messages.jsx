@@ -4,9 +4,13 @@ import { Context } from "../Context";
 import { doc, onSnapshot } from "firebase/firestore";
 
 export default function Messages() {
+  //if the images is broken
+  const handleImageError = (event) => {
+    event.target.style.visibility = "hidden";
+  };
+
   const [messages, setMessages] = useState([]);
   const { currentChatUserID, currentChatUserphotoURL } = useContext(Context);
-  // currentChatUserName, currentChatUserphotoURL
   useEffect(() => {
     const combinedID =
       auth.currentUser.uid > currentChatUserID
@@ -15,7 +19,6 @@ export default function Messages() {
     const unsub = onSnapshot(doc(db, "chats", combinedID), (doc) => {
       // console.log("Current data: ", doc.data());
       doc.exists() && setMessages(doc.data().messages);
-      // console.log(messages.length);
     });
 
     return () => {
@@ -31,12 +34,31 @@ export default function Messages() {
     messagesContainerRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // useEffect(() => {
-  //   console.log(messages[0].imgURL.length);
-  // }, [messages]);
+  const instructions = [
+    "Hello, Welcome to Texapp!",
+    "These are the instructions to use the App",
+    "You can find new users by searching their email address",
+    "Then open a new conversation by clicking on their profile when searched",
+    "am@gmail.com ",
+    "is a demo user to explore our Textapp",
+  ];
 
   return (
     <div className="messages">
+      {!currentChatUserID &&
+        instructions.map((instr) => {
+          return (
+            <div className="message" key={Math.random()}>
+              <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                alt="avatar"
+              />
+              <div className="message-content">
+                <p>{instr}</p>
+              </div>
+            </div>
+          );
+        })}
       {messages &&
         messages.map((m) => {
           return (
@@ -58,10 +80,20 @@ export default function Messages() {
                     alt="avatar"
                   />
                   <div className="photo-content">
-                    <img src={m.imgURL} alt="sent" />
+                    <img
+                      src={m.imgURL}
+                      alt="Sent a file"
+                      onError={handleImageError}
+                    />
+                    <a
+                      href={m.imgURL}
+                      target="_blank"
+                      rel="noreferrer"
+                      download
+                    >
+                      Download File
+                    </a>
                   </div>
-
-                  {/* <div ref={messagesContainerRef}></div> */}
                 </div>
               )}
               {m.message && (
@@ -80,11 +112,10 @@ export default function Messages() {
                     }
                     alt="avatar"
                   />
+
                   <div className="message-content">
                     <p>{m.message}</p>
                   </div>
-
-                  {/* <div ref={messagesContainerRef}></div> */}
                 </div>
               )}
             </div>

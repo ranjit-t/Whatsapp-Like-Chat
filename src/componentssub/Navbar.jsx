@@ -18,14 +18,14 @@ export default function Navbar() {
       <p>⋮</p>
       {profileClick && (
         <div className="profile-click">
-          <div
+          {/* <div
             onClick={async (e) => {
               e.preventDefault();
               setProfileClick((prev) => !prev); //Reversing back so that thr tab doesn't close
             }}
           >
             Profile
-          </div>
+          </div> */}
           <div
             onClick={async (e) => {
               e.preventDefault();

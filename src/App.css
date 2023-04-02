@@ -4,6 +4,10 @@
   height: 100vh;
 }
 
+img:not([src]) {
+  visibility: hidden;
+}
+
 body,
 html {
   padding: none;
