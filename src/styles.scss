@@ -315,7 +315,8 @@ button {
           margin-top: 5px;
           margin-left: 20px;
           display: flex;
-          margin-bottom: 10px;
+          margin-bottom: 15px;
+          position: relative;
 
           img {
             width: 50px;
@@ -336,11 +337,20 @@ button {
             height: auto;
             max-width: 70%;
             overflow-wrap: break-word;
+            margin-bottom: 5px;
             p {
               padding: 10px;
               max-width: 100%;
               margin: 0;
               text-align: left;
+            }
+            span {
+              position: absolute;
+              bottom: -10px;
+              left: 70px;
+              font-size: 9px;
+              color: white;
+              width: fit-content;
             }
           }
           .photo-content {
@@ -355,6 +365,14 @@ button {
             width: 30%;
             padding-bottom: 5px;
             margin-left: 10px;
+            span {
+              position: absolute;
+              bottom: -12px;
+              left: 70px;
+              font-size: 9px;
+              color: white;
+              width: fit-content;
+            }
 
             img {
               width: 100%;
@@ -374,7 +392,7 @@ button {
           margin-right: 20px;
 
           .message-content {
-            padding: 0 20px;
+            // padding: 0 20px;
             border-radius: 10px 0px 10px 10px;
             margin-right: 20px;
             margin-left: 70px;
@@ -383,11 +401,20 @@ button {
             height: auto;
             max-width: 70%;
             overflow-wrap: break-word;
+
+            margin-bottom: 5px;
             p {
-              padding: 10px;
               max-width: 100%;
               margin: 0;
               text-align: left;
+            }
+            span {
+              position: absolute;
+              bottom: -8px;
+
+              left: calc(100% - 120px);
+              font-size: 9px;
+              width: fit-content;
             }
           }
           .photo-content {
@@ -402,6 +429,13 @@ button {
             max-height: max-content;
             width: 30%;
             margin-right: 10px;
+            span {
+              position: absolute;
+              bottom: -12px;
+              left: calc(100% - 120px);
+              font-size: 9px;
+              width: fit-content;
+            }
 
             img {
               width: 100%;

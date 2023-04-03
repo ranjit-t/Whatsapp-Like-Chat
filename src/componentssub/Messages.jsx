@@ -95,6 +95,7 @@ export default function Messages() {
                     >
                       Download File
                     </a>
+                    <span>{m.time.toDate().toLocaleTimeString()}</span>
                   </div>
                 </div>
               )}
@@ -117,6 +118,7 @@ export default function Messages() {
 
                   <div className="message-content">
                     <p>{m.message}</p>
+                    <span>{m.time.toDate().toLocaleTimeString()}</span>
                   </div>
                 </div>
               )}
